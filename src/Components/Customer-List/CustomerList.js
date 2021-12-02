@@ -7,12 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
-export default function CustomerList({
-  customers,
-  newCustomerList,
-  createInvoice,
-}) {
+export default function CustomerList({ customers, newCustomerList }) {
   function deleteCustomer(id) {
     let newList = customers.filter((customer) => {
       return customer.id !== id;
@@ -28,6 +25,8 @@ export default function CustomerList({
             <TableRow>
               <TableCell>id</TableCell>
               <TableCell>Name</TableCell>
+              <TableCell></TableCell>
+              <TableCell></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -43,7 +42,11 @@ export default function CustomerList({
                   <TableCell>{row.name}</TableCell>
                   <TableCell>
                     <Button
-                      onClick={() => createInvoice(row.id, row.name)}
+                      component={Link}
+                      to={{
+                        pathname: "/invoicePage",
+                        query: { id: row.id, name: row.name },
+                      }}
                       variant="contained"
                     >
                       Create Invoice

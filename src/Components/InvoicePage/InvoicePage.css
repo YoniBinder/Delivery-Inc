@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+
+.invoice-container {
+  margin-top: 100px;
+  font-family: "PT Serif", serif;
+}
+.header-container {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+  padding: 10px 100px;
+  margin-bottom: 10px;
+}
+.invoice-date,
+.invoice-number {
+  font-size: 20px;
+}
+.invoice-date .date {
+  margin-bottom: 7px;
+}
+.grid-item {
+  text-align: left;
+  padding: 20px;
+}
+.invoice-title,
+.invoices-list .total-price {
+  font-size: 30px;
+}
+
+.body-container {
+  padding: 10px 50px;
+  display: block;
+  padding: 10px 100px;
+  margin-bottom: 70px;
+}
+.invoices-list {
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}
+.invoices-list th {
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 25px;
+}
+.invoices-list td {
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+.invoices-list .price-list {
+  background-color: lightgrey;
+}

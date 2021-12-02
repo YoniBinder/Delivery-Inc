@@ -46,7 +46,7 @@ export default function PackageList({ packages, newPackageList, customers }) {
     let newList = packages.filter((item) => {
       return item.id !== id;
     });
-    
+
     newPackageList(newList);
   }
 
@@ -75,12 +75,12 @@ export default function PackageList({ packages, newPackageList, customers }) {
       newPackage.price !== ""
     ) {
       let newList = [...packages];
-      let latestShippment= newList.reduce(function(prev, current) {
-        return (prev.shippingOrder > current.shippingOrder) ? prev : current
-    })
-    let maxIndPackage= newList.reduce(function(prev, current) {
-      return (Number(prev.id[3]) > Number(current.id[3])) ? prev : current
-  })
+      let latestShippment = newList.reduce(function (prev, current) {
+        return prev.shippingOrder > current.shippingOrder ? prev : current;
+      });
+      let maxIndPackage = newList.reduce(function (prev, current) {
+        return Number(prev.id[3]) > Number(current.id[3]) ? prev : current;
+      });
       newList.push({
         id: "pak" + (Number(maxIndPackage.id[3]) + 1),
         weight: Number(newPackage.weight) + "kg",
@@ -102,7 +102,6 @@ export default function PackageList({ packages, newPackageList, customers }) {
       return;
     let newList = [...packages];
     if (direction === "up") {
-      
       newList[packageIdx].shippingOrder--;
       newList[packageIdx - 1].shippingOrder++;
       [newList[packageIdx], newList[packageIdx - 1]] = [
@@ -156,43 +155,41 @@ export default function PackageList({ packages, newPackageList, customers }) {
                     >
                       Add a new package
                     </Typography>
-                      <TextField
-                        required
-                        error={errorMessage}
-                        type="number"
-                        id="outlined-required"
-                        name="customerId"
-                        label="Customer ID:"
-                        helperText={errorMessage ? "exist users only." : ""}
-                        sx={{ m: 1, width: "20ch" }}
-                        onChange={(event) => changeHandler(event)}
-                      />
-                      <TextField
-                        required
-                        name="weight"
-                        type="number"
-                        id="outlined-required"
-                        label="Weight:"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">kg</InputAdornment>
-                          ),
-                        }}
-                        onChange={(event) => changeHandler(event)}
-                        sx={{ m: 1, width: "20ch" }}
-                      />
-                      <TextField
-                        required
-                        id="outlined-required"
-                        label="Price:"
-                        type="number"
-                        name="price"
-                        sx={{ m: 1, width: "20ch" }}
-                        onChange={(event) => changeHandler(event)}
-                      />
-                    <Box
-                      sx={{ justifyContent: "center", display: "flex" }}
-                    >
+                    <TextField
+                      required
+                      error={errorMessage}
+                      type="number"
+                      id="outlined-required"
+                      name="customerId"
+                      label="Customer ID:"
+                      helperText={errorMessage ? "exist users only." : ""}
+                      sx={{ m: 1, width: "20ch" }}
+                      onChange={(event) => changeHandler(event)}
+                    />
+                    <TextField
+                      required
+                      name="weight"
+                      type="number"
+                      id="outlined-required"
+                      label="Weight:"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">kg</InputAdornment>
+                        ),
+                      }}
+                      onChange={(event) => changeHandler(event)}
+                      sx={{ m: 1, width: "20ch" }}
+                    />
+                    <TextField
+                      required
+                      id="outlined-required"
+                      label="Price:"
+                      type="number"
+                      name="price"
+                      sx={{ m: 1, width: "20ch" }}
+                      onChange={(event) => changeHandler(event)}
+                    />
+                    <Box sx={{ justifyContent: "center", display: "flex" }}>
                       <Button
                         disabled={isBlank}
                         variant="contained"
